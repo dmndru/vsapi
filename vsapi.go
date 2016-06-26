@@ -55,7 +55,7 @@ func NewClient(httpClient *http.Client) *Client  {
 		httpClient = http.DefaultClient
 	}
 	baseURL, _ := url.Parse(defaultBaseURL)
-	c := &Client{client: httpClient, BaseURL}
+	c := &Client{client: httpClient, BaseURL: baseURL}
 	return c
 }
 // GetServers returns list of servers
