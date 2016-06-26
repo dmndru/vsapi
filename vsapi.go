@@ -4,7 +4,8 @@ import (
 	"net/http"
 	"net/url"
 	"fmt"
-	"io/ioutil"
+	//"io/ioutil"
+	"encoding/json"
 )
 
 const (
@@ -60,6 +61,7 @@ func NewClient(httpClient *http.Client) *Client  {
 }
 // GetServers returns list of servers
 func (c *Client) GetServers() {
+	var scalets []Scalet;
 	req, err := http.NewRequest("GET", defaultBaseURL + "scalets", nil)
 	if err != nil {
 		fmt.Println(err)
@@ -75,11 +77,12 @@ func (c *Client) GetServers() {
 	case 404:
 		fmt.Println("path not found")
 	case 200:
-		scalets, err := ioutil.ReadAll(resp.Body)
+		json.NewDecoder(resp.Body).Decode(&scalets)
+		//scalets, err := ioutil.ReadAll(resp.Body)
 		resp.Body.Close()
 		if err != nil {
 			fmt.Println(err)
 		}
-		fmt.Printf("%v+", scalets)
+		fmt.Println(scalets)
 	}
 }
