@@ -9,7 +9,7 @@ import (
 
 const (
 	libraryVersion = "0.1"
-	defaultBaseURL = "http://api.vscale.io/v1/"
+	defaultBaseURL = "https://api.vscale.io/v1/"
 	userAgent      = "go-vscale/" + libraryVersion
 	headerToken    = "X-Token"
 	token = "b8042b9503a19b29e3105d0193700573b1f1aa9165b9ffbb2cc416f4ff304b1c"
